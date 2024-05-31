@@ -13,7 +13,7 @@ URP下灰度化背景，高亮指定物体
 ![](./Document/Step03.png)  
 选择package.json  
 # 使用
-使用示例可参考包内Runtime/Scenes路径的示例场景  
+使用示例可参考包内Runtime/Scenes路径下的示例场景  
 ```
 //接口1
 
