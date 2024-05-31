@@ -1,0 +1,17 @@
+{
+  "name": "com.wobok.gbhighlight",
+  "version": "1.0.0",
+  "displayName": "GBHighlight",
+  "description": "Gray background and highlight.",
+  "unity": "2022.3",
+ "keywords": [
+    "WoBok",
+    "Highlight",
+    "Gray Background"
+  ],
+  "author": {
+    "name": "WoBok",
+    "email": "Darwin.Vinci.WKC@gmail.com",
+    "url": "https://github.com/WoBok"
+  }
+}
