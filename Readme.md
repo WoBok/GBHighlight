@@ -15,7 +15,7 @@ URP下灰度化背景，高亮指定物体
 # 使用
 使用示例可参考包内Runtime/Scenes路径下的示例场景  
 
-*调用接口前需确保已添加名称为* **BGHighlight** *的Layer*  
+> *调用接口前需确保已添加名称为* **BGHighlight** *的Layer*  
 ### 接口
 ```
 //接口1
