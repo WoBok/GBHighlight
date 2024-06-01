@@ -38,7 +38,7 @@ public class GBHighlight : MonoBehaviour
 
     void Init()
     {
-        Instance.m_Layer = LayerMask.NameToLayer("BGHighlight");
+        Instance.m_Layer = LayerMask.NameToLayer("GBHighlight");
 
         Instance.m_CachedLayerIndex = new List<int>();
 
@@ -83,7 +83,7 @@ public class GBHighlight : MonoBehaviour
 
         if (Instance.m_Layer == -1)
         {
-            Debug.LogError("未找到Layer：BGHighlight，请添加后重试");
+            Debug.LogError("未找到Layer：GBHighlight，请添加后重试");
             return;
         }
 
@@ -184,7 +184,7 @@ public class GBHighlight : MonoBehaviour
         var cameraObj = new GameObject("Camera");
         Instance.m_OverlayCamera = cameraObj.AddComponent<Camera>();
         Instance.m_OverlayCamera.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Overlay;
-        Instance.m_OverlayCamera.cullingMask = 1 << LayerMask.NameToLayer("BGHighlight");
+        Instance.m_OverlayCamera.cullingMask = 1 << LayerMask.NameToLayer("GBHighlight");
         var mainCamera = Camera.main;
         cameraObj.transform.SetParent(mainCamera.transform, false);
         mainCamera.GetUniversalAdditionalCameraData().cameraStack.Add(Instance.m_OverlayCamera);
