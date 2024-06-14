@@ -27,7 +27,7 @@ public class GBHighlight : MonoBehaviour
 
     GBHighlightRenderPass m_GBHighlightRenderPass;
 
-    GameObject[] m_CachedGameObjects;
+    List<GameObject> m_CachedGameObjects;
     List<int> m_CachedLayerIndex;
 
     int m_Layer = -1;
@@ -40,6 +40,7 @@ public class GBHighlight : MonoBehaviour
     {
         Instance.m_Layer = LayerMask.NameToLayer("GBHighlight");
 
+        Instance.m_CachedGameObjects = new List<GameObject>();
         Instance.m_CachedLayerIndex = new List<int>();
 
         Instance.m_GBHighlightRenderPass = new GBHighlightRenderPass();
@@ -87,15 +88,24 @@ public class GBHighlight : MonoBehaviour
             return;
         }
 
-        Instance.m_CachedGameObjects = gameObjects;
+        Instance.m_CachedGameObjects.AddRange(gameObjects);
 
-        if (gameObjects != null)
-            foreach (var gameObject in gameObjects)
-                Instance.ChangeLayer(gameObject.transform);
+        Instance.ChangeLayer(gameObjects);
 
         Instance.AddOverlayCamera();
 
         RenderPipelineManager.beginCameraRendering += Instance.BeginCameraRendering;
+    }
+    public static void AddGameObjects(GameObject[] gameObjects)
+    {
+        foreach (var gameObject in gameObjects)
+        {
+            if (!Instance.m_CachedGameObjects.Contains(gameObject))
+            {
+                Instance.m_CachedGameObjects.Add(gameObject);
+                Instance.ChangeLayer(gameObject.transform);
+            }
+        }
     }
     void DoPattern1Anim(float duration)
     {
@@ -157,6 +167,12 @@ public class GBHighlight : MonoBehaviour
         Instance.m_CachedGameObjects = null;
         Instance.m_CachedLayerIndex = null;
         Instance = null;
+    }
+    void ChangeLayer(GameObject[] gameObjects)
+    {
+        if (gameObjects != null)
+            foreach (var gameObject in gameObjects)
+                Instance.ChangeLayer(gameObject.transform);
     }
     void ChangeLayer(Transform trans)
     {

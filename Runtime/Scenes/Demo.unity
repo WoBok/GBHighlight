@@ -728,7 +728,10 @@ MonoBehaviour:
   - {fileID: 272444049}
   - {fileID: 461277750}
   - {fileID: 617997235}
-  duration: 1
+  addGameObjects:
+  - {fileID: 1855193335}
+  - {fileID: 1285984890}
+  duration: 10
   index: 1
 --- !u!1 &1840004126
 GameObject:
