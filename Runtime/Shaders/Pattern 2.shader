@@ -50,6 +50,8 @@ Shader "GBHighlight/Pattern 2" {
 
                 float2 objScreenPos = _ObjScreenPos * 2 - 1;
                 float2 currentScreenPos = uv * 2 - 1;
+                float aspect = _ScreenParams.x / _ScreenParams.y;
+                currentRadius.x *= aspect;
                 float inRange = smoothstep(_Radius, _Radius + 0.3, length(currentScreenPos - objScreenPos));
                 
                 half gray = dot(color, half3(0.2125, 0.7154, 0.0721));
