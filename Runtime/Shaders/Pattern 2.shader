@@ -51,8 +51,9 @@ Shader "GBHighlight/Pattern 2" {
                 float2 objScreenPos = _ObjScreenPos * 2 - 1;
                 float2 currentScreenPos = uv * 2 - 1;
                 float aspect = _ScreenParams.x / _ScreenParams.y;
+                float2 currentRadius = currentScreenPos - objScreenPos;
                 currentRadius.x *= aspect;
-                float inRange = smoothstep(_Radius, _Radius + 0.3, length(currentScreenPos - objScreenPos));
+                float inRange = smoothstep(_Radius, _Radius + 0.3, length(currentRadius));
                 
                 half gray = dot(color, half3(0.2125, 0.7154, 0.0721));
                 color = lerp(half3(gray, gray, gray), color, inRange);
